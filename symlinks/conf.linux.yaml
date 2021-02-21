@@ -1,0 +1,11 @@
+- clean: ['~']
+
+- defaults:
+    link:
+      create: true
+      force: true
+
+- link:
+    ~/.dotly: os/linux/.dotly
+    ~/.tmux.conf: os/linux/tmux/.tmux.conf
+    ~/.tmux/resize-adaptable.sh: os/linux/tmux/.tmux/resize-adaptable.sh
