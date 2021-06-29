@@ -1,4 +1,4 @@
-export DOTFILES_PATH="$HOME/.dotfiles"
+export DOTFILES_PATH="/home/josue/.dotfiles"
 export DOTLY_PATH="$DOTFILES_PATH/modules/dotly"
 export DOTLY_THEME="codely"
 
@@ -32,19 +32,13 @@ for THEME_PATH in ${themes_paths[@]}; do
   [ -f "$THEME_PATH" ] && source "$THEME_PATH" && break
 done
 
-for bash_file in "$DOTLY_PATH"/shell/bash/completions/*; do
+for bash_file in "$DOTLY_PATH"/shell/bash/completions/_*; do
   source "$bash_file"
 done
 
 if [ -n "$(ls -A "$DOTFILES_PATH/shell/bash/completions/")" ]; then
-  for bash_file in "$DOTFILES_PATH"/shell/bash/completions/*; do
+  for bash_file in "$DOTFILES_PATH"/shell/bash/completions/_*; do
     source "$bash_file"
   done
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export EDITOR="vim"
-source "$HOME/.cargo/env"
