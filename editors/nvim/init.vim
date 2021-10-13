@@ -1,3 +1,4 @@
+syntax on
 set relativenumber
 set title  " Muestra el nombre del archivo en la ventana de la terminal
 set number  " Muestra los números de las líneas
