@@ -1,0 +1,6 @@
+[user]
+	email = josuedzp
+	name = josuezdp
+
+[includeIf "gitdir:~/workspace/acct/"]
+  path = .gitconfig-acct
