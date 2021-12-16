@@ -31,3 +31,4 @@ alias up='dot package update_all'
 
 # Editors
 alias vim="nvim"
+alias dv="youtube-dl -f bestvideo+bestaudio"
