@@ -1,5 +1,7 @@
 #!/bin/bash
 
+TOOLBELT_CFG_FILE="$HOME/.config/configstore/vtex.json"
+
 progress_bar() {
   SLEEP_DURATION=${SLEEP_DURATION:=1}
   local duration
@@ -33,33 +35,30 @@ progress_bar() {
   clean_line
 }
 
-parse_vtex_json() {
-    TOOLBELT_CFG_FILE="$HOME/.config/configstore/vtex.json"
-    cat "$TOOLBELT_CFG_FILE" | grep $1 | sed -n "s/^.*\"$1\": \"\(.*\)\".*$/\1/p"
+parse_json(){
+  local file = $1
+  local selector = $2
+  cat $file | grep $2 | sed -n "s/^.*\"$1\": \"\(.*\)\".*$/\1/p"
 }
 
 get_vtex_account() {
-    parse_vtex_json "account"
+  parse_json $TOOLBELT_CFG_FILE "account"
 }
 
 get_vtex_workspace() {
-    parse_vtex_json "workspace"
-}
-
-parse_manifest_json() {
-  cat manifest.json | grep $1 | sed -n "s/^.*\"$1\": \"\(.*\)\".*$/\1/p"
+  parse_json $TOOLBELT_CFG_FILE "workspace"
 }
 
 get_release_app_name() {
-  parse_manifest_json "name"
+  parse_json manifest.json "name"
 }
 
 get_release_app_vendor() {
-  parse_manifest_json "vendor"
+  parse_json manifest.json "vendor"
 }
 
 get_release_app_version() {
-  parse_manifest_json "version"
+  parse_json manifest.json "version"
 }
 
 check_account_credentials() {
