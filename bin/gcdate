@@ -26,6 +26,5 @@ if [ -z "${d}" ] || [ -z "${m}" ]; then
 fi
 
 date=$(date -d "${d}")
-echo $date
-# GIT_AUTHOR_DATE="$d" GIT_COMMITTER_DATE="$d" 
-# git commit --date "${d}" -m $m
+GIT_AUTHOR_DATE="$d" GIT_COMMITTER_DATE="$d" 
+git commit --date "${d}" -m $m
