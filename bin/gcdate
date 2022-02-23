@@ -26,5 +26,10 @@ if [ -z "${d}" ] || [ -z "${m}" ]; then
 fi
 
 date=$(date -d "${d}")
-GIT_AUTHOR_DATE="$d" GIT_COMMITTER_DATE="$d" 
-git commit --date "${d}" -m $m
+export GIT_AUTHOR_DATE="$d" 
+export GIT_COMMITTER_DATE="$d" 
+
+git commit --date "${d}" -m "${m}"
+
+unset GIT_AUTHOR_DATE
+unset GIT_COMMITTER_DATE
