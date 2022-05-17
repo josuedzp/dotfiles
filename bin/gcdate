@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-usage() { echo "Usage: $0 -d <date> -m <message>" 1>&2; exit 1; }
+usage() { echo "Usage: $0 -d <date>" 1>&2; exit 1; }
 
 while getopts ":d:m:" o; do
   case "${o}" in
@@ -21,15 +21,29 @@ while getopts ":d:m:" o; do
 done
 shift $((OPTIND-1))
 
-if [ -z "${d}" ] || [ -z "${m}" ]; then
+if [ -z "${d}" ]; then
   usage
 fi
 
-date=$(date -d "${d}")
-export GIT_AUTHOR_DATE="$d" 
-export GIT_COMMITTER_DATE="$d" 
+LANG=EN_US_88591
 
-git commit --date "${d}" -m "${m}"
+datenow=$(date) 
+datenow_format=$(date +"%d-%m-%Y %H:%M") 
+date=$(date -d "${d}")
+date_format=$(date -d "${d}" +"%d-%m-%Y %H:%M")
+
+if [[ $date > $datenow  ]]; then
+  echo "Que haces....? espabila anda"
+  echo "'${date_format}' es mayor que la fecha actual '${datenow_format}'"
+  exit 1
+fi
+
+read -p "Do you wanna continue with this date: '${date_format}'? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+
+
+export GIT_AUTHOR_DATE="$date" 
+export GIT_COMMITTER_DATE="$date" 
+git commit --date "${date}" --no-verify
 
 unset GIT_AUTHOR_DATE
 unset GIT_COMMITTER_DATE

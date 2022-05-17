@@ -28,6 +28,9 @@ alias i.='(idea $PWD &>/dev/null &)'
 alias c.='(code $PWD &>/dev/null &)'
 alias o.='open .'
 alias up='dot package update_all'
+alias findnm='find . -name "node_modules" -type d -prune | xargs du -chs' # Util to find nodemodules in folder and his size
+#alias rmnm='find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \;' # Util to remove nodemodules folders recursive on folder
+
 
 # Editors
 alias vim="nvim"
