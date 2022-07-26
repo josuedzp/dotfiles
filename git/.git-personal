@@ -1,0 +1,6 @@
+[core]
+    sshCommand = "ssh -i ~/.ssh/id_rsa -F /dev/null"
+
+[user]
+    name = josuedzp
+    email = josuedzp@gmail.com
