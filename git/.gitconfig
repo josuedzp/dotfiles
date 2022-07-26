@@ -1,6 +1,4 @@
-[user]
-	email = josuedzp
-	name = josuezdp
-
+include]
+    path = .gitconfig-personal
 [includeIf "gitdir:~/workspace/work/acct/"]
-  path = .gitconfig-acct
+    path = .gitconfig-acct
