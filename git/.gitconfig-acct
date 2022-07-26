@@ -1,3 +1,6 @@
+[core]
+    sshCommand = "ssh -i ~/.ssh/id_ed25519 -F /dev/null"
+
 [user]
-  email = josue.zambrano@acct.global
-  name = Josue Zambrano
+    name = Josue Zambrano
+    email = josue.zambrano@acct.global
